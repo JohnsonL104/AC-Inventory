@@ -115,7 +115,7 @@ function done() {
     html2canvas(navBody).then(canvas => {
       var image = canvas.toDataURL();
       var aDownloadLink = document.createElement('a');
-      aDownloadLink.download = 'canvas_image.png';
+      aDownloadLink.download = 'inventory_output.png';
       aDownloadLink.href = image;
       aDownloadLink.click();
       navBody.classList.remove("outputBody");
