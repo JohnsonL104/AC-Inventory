@@ -67,14 +67,14 @@ function updateLabel() {
     numInput.value = screenCount[list[i]]
     numInput.select();
 
-    if (i == 0) {
-      backBtn.classList.add("hidden");
-      nextBtn.classList.remove("hidden");
-    }
-    else {
-      nextBtn.classList.remove("hidden");
-      backBtn.classList.remove("hidden");
-    }
+//     if (i == 0) {
+//       backBtn.classList.add("hidden");
+//       nextBtn.classList.remove("hidden");
+//     }
+//     else {
+//       nextBtn.classList.remove("hidden");
+//       backBtn.classList.remove("hidden");
+//     }
 
 
     navBody.innerHTML = "";
