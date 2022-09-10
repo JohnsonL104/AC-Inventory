@@ -66,11 +66,8 @@ function updateLabel() {
     label.innerHTML = list[i];
     numInput.value = screenCount[list[i]]
     numInput.select();
-    if (i == list.length - 1) {
-      nextBtn.classList.add("hidden");
-      backBtn.classList.remove("hidden");
-    }
-    else if (i == 0) {
+
+    if (i == 0) {
       backBtn.classList.add("hidden");
       nextBtn.classList.remove("hidden");
     }
@@ -97,7 +94,9 @@ function updateLabel() {
         updateLabel();
       })
       navBody.appendChild(row)
+
     }
+    document.querySelector(".selected").scrollIntoView()
   }
   else {
     navBody.innerHTML = "";
@@ -127,9 +126,7 @@ function done() {
 
 input.addEventListener("keypress", function(event) {
   if (event.key == "Enter") {
-    if (i != list.length - 1) {
-      next();
-    }
+    next();
   }
 })
 
