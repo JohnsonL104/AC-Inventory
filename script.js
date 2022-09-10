@@ -19,7 +19,7 @@ function onChange(event) {
 
 function onReaderLoad(event) {
   res = event.target.result
-  list = res.split(",")
+  list = res.split("\n")
 
   for (let y = 0; y < list.length; y++) {
     list[y] = list[y].trim()
@@ -34,7 +34,7 @@ function onReaderLoad(event) {
 
 function next() {
   if (list.length > 0) {
-    screenCount[list[i]] = numInput.value
+    screenCount[list[i]] = (numInput.value != "") ? numInput.value : 0;
     if (i + 1 < list.length) {
       i += 1;
     }
