@@ -1,6 +1,10 @@
 Basic inventory program.
 
 Input is .csv file in this format (with no quotation marks):
-"item1, item2, item3"
+"
+item1
+item2
+item3
+"
 
 Go to site: https://johnsonl104.github.io/;
