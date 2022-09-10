@@ -2,6 +2,8 @@ var label = document.querySelector("#label");
 var input = document.querySelector("#numInput")
 var backBtn = document.querySelector("#backBtn");
 var nextBtn = document.querySelector("#nextBtn");
+var doneBtn = document.querySelector("#doneBtn");
+
 var inputDiv = document.querySelector("#inputDiv");
 var navBody = document.querySelector("#navBody");
 var screenCount = {};
@@ -67,14 +69,10 @@ function updateLabel() {
     numInput.value = screenCount[list[i]]
     numInput.select();
 
-//     if (i == 0) {
-//       backBtn.classList.add("hidden");
-//       nextBtn.classList.remove("hidden");
-//     }
-//     else {
-//       nextBtn.classList.remove("hidden");
-//       backBtn.classList.remove("hidden");
-//     }
+
+    nextBtn.classList.remove("hidden");
+    backBtn.classList.remove("hidden");
+    doneBtn.classList.remove("hidden");
 
 
     navBody.innerHTML = "";
@@ -102,6 +100,10 @@ function updateLabel() {
     navBody.innerHTML = "";
     label.innerHTML = "Select CSV File";
 
+    nextBtn.classList.add("hidden");
+    backBtn.classList.add("hidden");
+    doneBtn.classList.add("hidden");
+
     alert("Please Select a CSV File")
 
   }
@@ -125,7 +127,7 @@ function done() {
 }
 
 input.addEventListener("keypress", function(event) {
-  if (event.key == "Enter") {
+  if (event.key == "Enter" && list.length > 0) {
     next();
   }
 })
