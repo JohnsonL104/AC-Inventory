@@ -7,6 +7,7 @@
   <title>Inventory</title>
   <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
   <link href="style.css" rel="stylesheet" type="text/css" />
+
 </head>
 
 <body>
@@ -33,9 +34,15 @@
     </div>
     <button class="hidden" onclick="done()" id="doneBtn">Done</button>
   </div>
-
+  <div class="hidden" id="qrcodewrapper">
+    <div id="qrcode"></div>
+    
+  </div>
+  <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs/qrcode.min.js"></script>
 
   <script src="html2canvas.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
   <script src="script.js"></script>
 
 </body>
