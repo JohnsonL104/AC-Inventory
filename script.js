@@ -3,9 +3,10 @@ var input = document.querySelector("#numInput")
 var backBtn = document.querySelector("#backBtn");
 var nextBtn = document.querySelector("#nextBtn");
 var doneBtn = document.querySelector("#doneBtn");
-
 var inputDiv = document.querySelector("#inputDiv");
 var navBody = document.querySelector("#navBody");
+var qrdiv = document.getElementById('qrcode')
+var qrCodeWrapper = document.querySelector("#qrcodewrapper")
 var screenCount = {};
 var list = [];
 var i = 0;
@@ -34,7 +35,7 @@ function onReaderLoad(event) {
 
 function next() {
   if (list.length > 0) {
-    screenCount[list[i]] = (numInput.value != "") ? numInput.value : 0;
+    screenCount[list[i]] = numInput.value
     if (i + 1 < list.length) {
       i += 1;
     }
@@ -114,10 +115,39 @@ function done() {
     navBody.classList.add("outputBody")
     html2canvas(navBody).then(canvas => {
       var image = canvas.toDataURL();
-      var aDownloadLink = document.createElement('a');
-      aDownloadLink.download = 'inventory_output.png';
-      aDownloadLink.href = image;
-      aDownloadLink.click();
+      $.ajax({
+        url: "https://api.imgur.com/3/image/",
+        type: "POST",
+        data: {
+          'image': image.replace("data:image/png;base64,", "")
+        },
+        headers: {
+          "Authorization": "Client-ID 338b6a7dc317069"
+        },
+
+        success: function(e) {
+          console.log(e.data.link)
+          qrdiv.innerHTML = "<a id='qrBack' href=''>X</a><a href = '" + e.data.link + "'>Go to Image</a>";
+
+          document.querySelector("#qrBack").addEventListener("click", function(e) {
+            e.preventDefault();
+            qrCodeWrapper.classList.add("hidden");
+          })
+          const qrcode = new QRCode(qrdiv, {
+            text: e.data.link,
+            width: 128,
+            height: 128,
+            colorDark: '#000',
+            colorLight: '#fff',
+            correctLevel: QRCode.CorrectLevel.H
+          });
+          qrCodeWrapper.classList.remove("hidden");
+        },
+        error: function(e) {
+          console.log(e);
+        }
+      });
+
       navBody.classList.remove("outputBody");
     });
   }
