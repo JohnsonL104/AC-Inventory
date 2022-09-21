@@ -9,8 +9,10 @@ html, body {
   margin: 0;
 }
 
-.hidden{
+.hidden, .hidden *{
   display: none;
+  width: 0 !important;
+  height: 0 !important;
 }
 table {
   margin: 0 auto;
@@ -35,18 +37,63 @@ button{
   border: 1px solid black
 }
 #inputDiv{
+  position: fixed;
+  
   display: flex;
   flex-direction: column;
   width: 65%;
-  margin-left: 20%;
-  padding-top: 20%;
+  right: 20%;
+  top: 20%;
   align-items: center;
   
 }
 #inputDiv *{
   margin-bottom: 20px;
 }
+#qrcodewrapper{
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  padding: 5px;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#qrBack{
+  color: red;
+  background-color: #eee;
+  padding: 2px;
+  border-radius: 50px;
+  width: 32px;
+  height: 32px;
+  text-decoration: none;
+  position: fixed; 
+  font-size: 30px;
+  top: 1%;
+  right: 1%;
+}
+#qrcode{
+  background-color: #bbb;
+  padding: 3%;
+  border-radius: 20px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 
+  color: #62CD32;
+}
+#qrcode *{
+  margin-bottom: 5px;
+}
+#qrcode img{
+  border: 3px solid white;
+  margin: 15px;
+}
 
 .nav{
   position:absolute;
